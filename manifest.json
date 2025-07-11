@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Dueling Nexus Deck Exporter",
+  "version": "1.0",
+  "description": "Export your deck for use in any simulator!",
+  "permissions": [],
+  "content_scripts": [
+    {
+      "matches": ["https://duelingnexus.com/editor/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
