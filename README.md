@@ -5,3 +5,5 @@ This is pending approval on the app store, but in the meantime it can be added m
 Or you can paste the contents of content.js into your chrome/firefox console, and it will add the button to that page.
 
 ![Demo](images/duelingnexus-deck-exporter-sample.jpg)
+![ErrataDemoBefore](images/duelingnexus_deck_exporter_errata_toggle_before.PNG)
+![ErrataDemoAfter](images/duelingnexus_deck_exporter_errata_toggle_after.PNG)
