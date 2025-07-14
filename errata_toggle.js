@@ -103,5 +103,11 @@
     Editor.updateDeck();
   });
 
-  menu.appendChild(btn);
+  //always want it before the export button for looks
+  const exportBtn = document.getElementById('export-button');
+  if (exportBtn) {
+    menu.insertBefore(btn, exportBtn);
+  } else {
+    menu.appendChild(btn);
+  }
 })();

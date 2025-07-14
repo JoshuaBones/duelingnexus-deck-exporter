@@ -7,12 +7,7 @@
   "content_scripts": [
     {
       "matches": ["https://duelingnexus.com/editor/*"],
-      "js": ["content.js"],
-      "run_at": "document_start"
-    },
-    {
-      "matches": ["https://duelingnexus.com/editor/*"],
-      "js": ["export.js"],
+      "js": ["content.js", "export.js"],
       "run_at": "document_idle"
     }
   ],
