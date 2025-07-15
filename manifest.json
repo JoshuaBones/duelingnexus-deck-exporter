@@ -9,6 +9,11 @@
       "matches": ["https://duelingnexus.com/editor/*"],
       "js": ["content.js", "export.js"],
       "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://duelingnexus.com/decks"],
+      "js": ["deck_list_export.js", "lib/jszip.min.js"],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [

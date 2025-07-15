@@ -2,7 +2,7 @@
   // Only add once
   if (document.getElementById('errata-button')) return;
 
-  // Insert button next to export
+  // Insert this errata button next to the export button
   const menu = document.getElementById('editor-menu-content');
   if (!menu) return;
 
