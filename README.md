@@ -1,6 +1,6 @@
 # duelingnexus-deck-exporter
-Chrome extension which adds a deck export button to DuelingNexus's deck editor. Goat/Edison erratas may not work in other simulators. The old exporter seems to have been taken down, so this was made in its place.<br />
-Each feature is shown in an image below
+Chrome extension which adds a deck export button to DuelingNexus's deck editor. The old exporter seems to have been taken down, so this was made in its place.<br />
+Each feature is shown in an image below. Feel free to suggest new ones.
 
 This is available on the app store: https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde
 
