@@ -124,6 +124,8 @@
     Editor.updateDeck(); // The deck object does not update without this, even though visually the page does
   });
 
+  //smaller screens wrap the buttons, so give them a little more rooom
+  document.getElementById('editor-menu-spacer').style.width = '18%';
   //always want it before the export button for looks
   const exportBtn = document.getElementById('export-button');
   if (exportBtn) {

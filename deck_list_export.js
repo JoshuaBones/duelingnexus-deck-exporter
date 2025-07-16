@@ -129,5 +129,4 @@
 
     //Todo: Modularize code (downloadFile, etc.)
     //"Export All & Remove Erratas" button
-    // shrink #editor-menu-spacer to 18% from 25%?
 })();
