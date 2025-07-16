@@ -8,7 +8,12 @@
     {
       "matches": ["https://duelingnexus.com/editor/*"],
       "js": ["content.js", "export.js"],
-      "run_at": "document_idle"
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://duelingnexus.com/", "https://duelingnexus.com/home", "https://duelingnexus.com/duel", "https://duelingnexus.com/decks", "https://duelingnexus.com/profile", "https://duelingnexus.com/achievements", "https://duelingnexus.com/boutique", "https://duelingnexus.com/replays", "https://duelingnexus.com/donate"],
+      "js": ["deck_list_export.js", "lib/jszip.min.js"],
+      "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [

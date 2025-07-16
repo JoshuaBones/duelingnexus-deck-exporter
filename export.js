@@ -1,5 +1,14 @@
 (function () {
   // Extract card ID from img background URL
+  
+  /**
+   * Extracts an array of card IDs from a given container on the page.
+   * 
+   * This is also possible by accessing existing js variables, but that would
+   * require injecting this script, which I'd like to avoid unless necessary.
+   * @param {string} deckSelector - A CSS selector for the deck container
+   * @returns {Array<string>} An array of card IDs
+   */
   function extractCardIds(deckSelector) {
     const container = document.querySelector(deckSelector);
     if (!container) return [];
@@ -19,19 +28,27 @@
     return lines.join('\n');
   }
 
-  // Download the generated file
+  /**
+   * Download a file using a blob
+   * @param {String} filename - The name of the file to download
+   * @param {String} content - The content of the file to download
+   */
   function downloadFile(filename, content) {
     const blob = new Blob([content], { type: 'text/plain' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
-    a.download = filename.endsWith('.ydk') ? filename : filename + '.ydk';
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(a.href);
   }
 
-  // Add the export button immediately
+/**
+ * Adds an "Export" button to the editor, which allows users to download the current deck
+ * as a .ydk file. The button is styled and added to a specific container within the page.
+ * Clicking the button triggers the download of the deck as a .ydk file.
+ */
   function addExportButton() {
     if (document.getElementById('editor-export-button')) return;
 
@@ -60,7 +77,7 @@
     //document.body.appendChild(button);
   }
 
-  // Run immediately on page load
+  // Run on page load to dynamically add button
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', addExportButton);
   } else {
