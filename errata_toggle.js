@@ -2,7 +2,7 @@
   // Only add once
   if (document.getElementById('errata-button')) return;
 
-  // Insert button next to export
+  // Insert this errata button next to the export button
   const menu = document.getElementById('editor-menu-content');
   if (!menu) return;
 
@@ -13,8 +13,8 @@
   btn.title = "Toggle Goat/Edison Erratas (other simulators don't use the same card ids)";
 
   btn.addEventListener('click', function () {
-    // Normal Id and Errata Id in order. May change to include multiple normal ids eventually
-    const normalIds = window.normalIds || [
+    // Normal Id and Errata Id in order. May change to include multiple normal ids eventually (search blue-eyes as an example)
+    const normalIds = [
       88264978, 53183600, 15894048, 75745607, 40737112, 47297616, 5645210, 61468779,
       76862289, 38369349, 22446869, 91842653, 9596126, 89111398, 82841979, 28563545,
       90960358, 21785144, 2356994, 95727991, 20932152, 58996430, 40473581, 96235275,
@@ -30,7 +30,7 @@
       71645242, 94634433, 15800838, 37580756, 81210420, 29389368, 80604091, 9995766,
       68540058, 40172183, 13955608
     ];
-    const errataIds = window.errataIds || [
+    const errataIds = [
       130000007, 130000052, 130000080, 130000022, 130000060, 130000028, 130000110,
       130000061, 130000043, 130000081, 130000062, 130000104, 130000075, 130000011,
       130000044, 130000082, 130000105, 130000018, 130000019, 130000021, 130000002,
@@ -49,13 +49,20 @@
       130000094, 130000113
     ];
 
-    Editor.updateDeck();// User adding a card after page load, then clicking toggle does not update Deck object
+    Editor.updateDeck();// User adding a card after page load, then clicking toggle does not update Deck object. Basically ensure Deck object is up-to-date before doing anything
 
-    // Get Deck object from page
+    // Get Deck object from page. This feature wouldn't be possible without access to it and Editor, which is why injection is necessary
     const Deck = window.Deck;
     if (!Deck) return;
 
-    // Helper: find matches in a deck section
+    /**
+     * Finds errata matches in a deck section, putting them in a map of format {deckArrIndex: errataIdsIndex}.
+     * deckArr is one of these three: main/extra/side
+     * 
+     * @param {Array<number>} deckArr - Array of card IDs to search through.
+     * @param {Array<number>} ids - Array of IDs to match against.
+     * @returns {Object} An object mapping indices of matches in deckArr to their indices in ids.
+     */
     function findMatches(deckArr, ids) {
       const map = {};
       deckArr.forEach((id, idx) => {
@@ -65,12 +72,14 @@
       return map;
     }
 
+    // Start of dealing with erratas
     // Try errataIds first
     let foundType = null;
     let mainMap = findMatches(Deck.main, errataIds);
     let extraMap = findMatches(Deck.extra, errataIds);
     let sideMap = findMatches(Deck.side, errataIds);
 
+    // Look at the vars above ^ and if they have any matches, then we're converting errata to normal ids
     if (Object.keys(mainMap).length || Object.keys(extraMap).length || Object.keys(sideMap).length) {
       foundType = 'errata';
     } else {
@@ -78,6 +87,7 @@
       mainMap = findMatches(Deck.main, normalIds);
       extraMap = findMatches(Deck.extra, normalIds);
       sideMap = findMatches(Deck.side, normalIds);
+      // Any matches and we're going from normal ids to erratas
       if (Object.keys(mainMap).length || Object.keys(extraMap).length || Object.keys(sideMap).length) {
         foundType = 'normal';
       }
@@ -85,9 +95,20 @@
 
     if (!foundType) return; // Nothing to do
 
-    // Swap logic
+    // Set swap logic - the ids to swap to
     const toIds = foundType === 'errata' ? normalIds : errataIds;
 
+  /**
+   * Swaps card IDs in a specific deck section based on a mapping of indices.
+   *
+   * Iterates over the provided map of indices, removes the card at each index
+   * in the specified section, and adds a new card ID from the `toIds` array.
+   * If the index equals the length of the deck array, the card is added to the end.
+   * 
+   * @param {string} section - The section of the deck to modify (e.g., 'main', 'extra', 'side').
+   * @param {Object} map - An object mapping indices in the deck array to indices in the toIds array.
+   * @param {Array<number>} deckArr - The array of card IDs representing the current deck section.
+   */
     function swapSection(section, map, deckArr) {
       for (const [idxStr, idIdx] of Object.entries(map)) {
         let idx = parseInt(idxStr, 10);
@@ -100,13 +121,16 @@
     swapSection('main', mainMap, Editor.main);
     swapSection('extra', extraMap, Editor.extra);
     swapSection('side', sideMap, Editor.side);
-    Editor.updateDeck();
+    Editor.updateDeck(); // The deck object does not update without this, even though visually the page does
   });
 
+  //smaller screens wrap the buttons, so give them a little more rooom
+  document.getElementById('editor-menu-spacer').style.width = '18%';
   //always want it before the export button for looks
   const exportBtn = document.getElementById('export-button');
   if (exportBtn) {
     menu.insertBefore(btn, exportBtn);
+    document.querySelector('#errata-button').style.marginRight = '5px';
   } else {
     menu.appendChild(btn);
   }
