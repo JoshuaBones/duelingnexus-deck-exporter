@@ -1,4 +1,21 @@
 (function () {
+  /**
+   * Finds errata matches in a deck section array (main/extra/side), putting them in a map of format {deckArrIndex: errataOrNormalIdsIndex}.
+   * deckArr is one of these three: main/extra/side
+   * 
+   * @param {Array<number>} deckArr - Array of card IDs to search through.
+   * @param {Array<number>} ids - Array of IDs (erratas or their normal counterparts) to match against.
+   * @returns {Object} An object mapping indices of matches in deckArr to their indices in ids. {deckArrIndex: errataOrNormalIdsIndex}
+   */
+  function findMatches(deckArr, ids) {
+      const map = {};
+      deckArr.forEach((id, idx) => {
+          const foundIdx = ids.indexOf(id);
+          if (foundIdx !== -1) map[idx] = foundIdx;
+      });
+      return map;
+  }
+
   // Only add once
   if (document.getElementById('errata-button')) return;
 

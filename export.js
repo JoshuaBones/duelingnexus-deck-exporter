@@ -1,8 +1,6 @@
 (function () {
-  // Extract card ID from img background URL
-  
   /**
-   * Extracts an array of card IDs from a given container on the page.
+   * Extract card ID from img background URL
    * 
    * This is also possible by accessing existing js variables, but that would
    * require injecting this script, which I'd like to avoid unless necessary.
@@ -17,31 +15,6 @@
       const match = img.style.backgroundImage.match(/\/(\d+)\.jpg/);
       return match ? match[1] : null;
     }).filter(Boolean);
-  }
-
-  // Build the .ydk deck text
-  function buildDeckText(main, extra, side) {
-    const lines = ['#created by ...', '#main'];
-    lines.push(...main);
-    lines.push('#extra', ...extra);
-    lines.push('!side', ...side);
-    return lines.join('\n');
-  }
-
-  /**
-   * Download a file using a blob
-   * @param {String} filename - The name of the file to download
-   * @param {String} content - The content of the file to download
-   */
-  function downloadFile(filename, content) {
-    const blob = new Blob([content], { type: 'text/plain' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(a.href);
   }
 
 /**
