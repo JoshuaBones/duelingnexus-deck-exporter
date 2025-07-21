@@ -19,8 +19,6 @@
         exportBtn.title = 'Remove erratas and save to a zip file';
         exportBtn.textContent = 'Export All & Remove Erratas';
         exportBtn.className = 'export-all-erratas-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
-        // Style to push it to the far right
-        //exportBtn.style.marginLeft = 'auto';
 
         exportBtn.addEventListener('click', function () {
             downloadDecks(null, replaceAllDeckErratas);
@@ -45,8 +43,6 @@
         exportBtn.title = 'Export all decks to a zip file';
         exportBtn.textContent = 'Export All';
         exportBtn.className = 'export-all-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
-        // Style to push it to the far right
-        //exportBtn.style.marginLeft = 'auto';
 
         exportBtn.addEventListener('click', function () {
             downloadDecks();

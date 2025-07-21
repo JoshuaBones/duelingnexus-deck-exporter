@@ -138,13 +138,13 @@
     swapSection('main', mainMap, Editor.main);
     swapSection('extra', extraMap, Editor.extra);
     swapSection('side', sideMap, Editor.side);
-    Editor.updateDeck(); // The deck object does not update without this, even though visually the page does
+    Editor.updateDeck(); // The Deck object does not update without this, even though visually the page does
   });
 
   //smaller screens wrap the buttons, so give them a little more rooom
-  document.getElementById('editor-menu-spacer').style.width = '18%';
+  document.getElementById('editor-menu-spacer').style.width = '10%';//'18%';
   //always want it before the export button for looks
-  const exportBtn = document.getElementById('export-button');
+  const exportBtn = document.getElementById('editor-export-button');
   if (exportBtn) {
     menu.insertBefore(btn, exportBtn);
     document.querySelector('#errata-button').style.marginRight = '5px';
