@@ -1,5 +1,5 @@
 # duelingnexus-deck-exporter
-Chrome extension for DuelingNexus.com https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde<br />
+Chrome extension for DuelingNexus.com <br /> https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde<br />
 Export your deck as ydk, import/export as YDKe link, toggle Goat/Edison erratas and download all your decks as a zip file!<br />The old exporter seems to have been taken down, so this was made in its place.<br />
 Feel free to suggest new features.
 
@@ -7,7 +7,7 @@ Feel free to suggest new features.
 
 ### Export
 * Export your deck to a ydk file
-* Export your deck to a ydke link to your clipboard
+* Export your deck as a ydke link to your clipboard
 * Export all decks as zip with individual ydk files
 * Export all but with all custom erratas replaced
 
@@ -17,7 +17,7 @@ Feel free to suggest new features.
 ### Editor Improvements
 * Errata toggle
 
-
+## Feature Images
 ![DeckEditFeatures](images/deck_edit_features.png)
 ![DeckListFeatures](images/deck_list_features.png)
 
