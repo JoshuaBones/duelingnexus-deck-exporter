@@ -18,10 +18,14 @@ function parseDeck(deckText) {
             const cardId = parseInt(line, 10);
 
             if (!isNaN(cardId)) {
-                deck[section].push(line);// They convert to numbers in Nexus scripts, so we have to as well
+                deck[section].push(cardId);// They convert to numbers in Nexus scripts, so we have to as well
             }
         }
     });
+
+    //deck.main = Uint32Array.from(deck.main);
+    //deck.extra = Uint32Array.from(deck.extra);
+    //deck.side = Uint32Array.from(deck.side);
 
     //console.log(`Deck: ${deck.main} extra ${deck.extra} side ${deck.side}`);
     return deck;
@@ -43,6 +47,7 @@ async function getAllDecks(files) {
             decks.push(deckInfo);
         } catch(error) {
             //deck failed to parse, don't add
+            console.log("failed parse", error);
         }
     };
     return decks;
@@ -50,11 +55,11 @@ async function getAllDecks(files) {
 
 async function postDeck(deckInfo) {
     const payload = {
-        deck: deckInfo.deck,
-        name: deckInfo.name
+        name: deckInfo.name,
+        deck: JSON.stringify(deckInfo.deck)
     };
 
-    const response = await fetch('/create-deck', {
+    /*const response = await fetch('create-deck.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -66,10 +71,14 @@ async function postDeck(deckInfo) {
         throw new Error(`Failed to upload ${deckInfo.name}: ${response.statusText}`);
     }
 
-    const result = await response.json();
-    console.log(`Deck created for ${deckInfo.name}:`, result);
+    const result = await response.text();
+    console.log(`Deck created for ${deckInfo.name}:`, payload);*/
 
-
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/api/create-deck.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(payload));
+    console.log(`posted ${payload.name}`)
 }
 
 async function uploadMultipleFiles(files) {
@@ -126,5 +135,6 @@ function addImportMultipleButton() {
     container.appendChild(fileInput);
 }
 
-//addImportMultipleButton();
 //})();
+//uncomment this to run in console with host permission (testing to see if this is necessary)
+//addImportMultipleButton();
