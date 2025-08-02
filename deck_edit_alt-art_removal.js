@@ -6,7 +6,7 @@
     if (!Deck) return;
 
     const deck = window.Deck;
-    //
+    //Editor.database.cards[#]
     
 
     Editor.updateDeck();
