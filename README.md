@@ -18,6 +18,7 @@ Feel free to suggest new features.
 
 ### Editor Improvements
 * Errata toggle
+* Remove alt-arts for Edison mode and compatibility with other simulators
 
 ## Feature Images
 ![DeckEditFeatures](images/deck_edit_features.png)
