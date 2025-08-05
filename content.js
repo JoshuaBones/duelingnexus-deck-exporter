@@ -9,7 +9,8 @@ function injectScript(file) {
   (document.head || document.documentElement).appendChild(script);
 }
 
-// Injection is necessary because these features are impossible without access to the page's 'Editor' and 'Deck' variables
+// Injection is necessary because these features are impossible without access to the page's 'Editor', 'Engine' and 'Deck' variables.
+injectScript('deck_edit_alt-art_removal.js');
 injectScript('errata_toggle.js');
 injectScript('deck_edit_import.js');
 injectScript('lib/YDKe.js');
