@@ -14,10 +14,11 @@ Feel free to suggest new features.
 * Export all but with all custom erratas replaced (see image below)
 
 ### Import
-* Paste YDKe link anywhere on the page to overwrite the current deck
+* Paste YDKe link after clicking deck area to overwrite the current deck
 
 ### Editor Improvements
 * Errata toggle
+* Remove alt-arts for Edison mode and compatibility with other simulators
 
 ## Feature Images
 ![DeckEditFeatures](images/deck_edit_features.png)
