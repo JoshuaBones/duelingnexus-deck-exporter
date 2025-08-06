@@ -48,8 +48,48 @@
             downloadDecks();
         });
 
+
+        // Create a settings button
+        const settingsBtn = document.createElement('button');
+        settingsBtn.title = 'Settings';
+        settingsBtn.innerHTML = '&#9881;';
+        settingsBtn.className = 'settings-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
+
+        // Create a popup div for settings
+        const settingsPopup = document.createElement('div');
+        //settingsPopup.className = 'settings-popup hidden';
+        settingsPopup.style = 'position: absolute; top: 100%; right: 0; background-color: #2c2c2c; padding: 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+        settingsPopup.innerHTML = `
+            <h2>Settings</h2>
+            <label>
+                <input type="checkbox" id="replace-erratas">
+                Replace Erratas
+            </label>
+            <label>
+                <input type="checkbox" id="replace-alt-arts">
+                Replace Alt-Arts
+            </label>
+        `;
+
+        settingsBtn.addEventListener('click', () => {
+        if (settingsPopup.style.display === 'block') {
+            settingsPopup.style.display = 'none';
+        } else {
+            settingsPopup.style.display = 'block';
+        }
+        });
+
+        document.addEventListener('click', (e) => {
+        if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
+            settingsPopup.style.display = 'none';
+        }
+        });
+
+
         // Insert as the last child
         container.appendChild(exportBtn);
+        container.appendChild(settingsBtn);
+        container.appendChild(settingsPopup);
     }
 
 
@@ -64,7 +104,7 @@
             && mutation.addedNodes[0].className === "flex justify-center items-center w-full") {
 
             addButtonContainer();
-            addExportAllRemoveErrataButton();
+            //addExportAllRemoveErrataButton();
             addExportAllButton();
             //Todo: add export button for each individual deck. Maybe not due to UI clutter
         }
