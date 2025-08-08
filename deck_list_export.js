@@ -8,25 +8,6 @@
 
         container.appendChild(newDiv);
     }
-
-    function addExportAllRemoveErrataButton() {
-        // Find the container with the two buttons
-        const container = document.querySelector('#new-features-container');
-        if (!container) return;
-
-        // Create the Export All & remove Erratas button
-        const exportBtn = document.createElement('button');
-        exportBtn.title = 'Remove erratas and save to a zip file';
-        exportBtn.textContent = 'Export All & Remove Erratas';
-        exportBtn.className = 'export-all-erratas-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
-
-        exportBtn.addEventListener('click', function () {
-            downloadDecks(null, [replaceAllDeckErratas]);
-        });
-
-        // Insert as the last child
-        container.appendChild(exportBtn);
-    }
     
     /**
      * Adds an "Export All" button to the UI, which allows users to download all decks as a zip file.
