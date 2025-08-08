@@ -21,7 +21,7 @@
         exportBtn.className = 'export-all-erratas-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
 
         exportBtn.addEventListener('click', function () {
-            downloadDecks(null, replaceAllDeckErratas);
+            downloadDecks(null, [replaceAllDeckErratas]);
         });
 
         // Insert as the last child
@@ -42,29 +42,53 @@
         const exportBtn = document.createElement('button');
         exportBtn.title = 'Export all decks to a zip file';
         exportBtn.textContent = 'Export All';
-        exportBtn.className = 'export-all-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
+        exportBtn.className = 'export-all-btn transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
 
         exportBtn.addEventListener('click', function () {
-            downloadDecks();
+            const replaceErratas = document.getElementById('replace-erratas').checked;
+            const replaceAltArts = document.getElementById('replace-alt-arts').checked;
+
+            const deckPreProcesseses = [];
+            if (replaceErratas) {
+                deckPreProcesseses.push(replaceAllDeckErratas);
+            }
+            if (replaceAltArts) {
+                deckPreProcesseses.push(replaceAllDeckAltArts);
+            }
+
+            downloadDecks(null, deckPreProcesseses);
         });
 
 
         // Create a settings button
         const settingsBtn = document.createElement('button');
-        settingsBtn.title = 'Settings';
+        settingsBtn.title = 'Export Settings';
         settingsBtn.innerHTML = '&#9881;';
-        settingsBtn.className = 'settings-btn flex flex-col justify-center transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
+        settingsBtn.className = 'settings-btn transition-colors hover:bg-purple-700 cursor-pointer bg-slate-800 border-[1px] border-slate-700 p-2 ml-2';
+        settingsBtn.style.marginLeft = '0';
 
         // Create a popup div for settings
         const settingsPopup = document.createElement('div');
         //settingsPopup.className = 'settings-popup hidden';
-        settingsPopup.style = 'position: absolute; top: 100%; right: 0; background-color: #2c2c2c; padding: 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+        //settingsPopup.style = 'position: absolute; top: 100%; right: 0; background-color: #2c2c2c; padding: 20px; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);';
+        settingsPopup.style = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #2c2c2c;
+            padding: 20px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: none;
+            `;
         settingsPopup.innerHTML = `
-            <h2>Settings</h2>
+            <h2>Export All - Settings</h2>
             <label>
                 <input type="checkbox" id="replace-erratas">
                 Replace Erratas
-            </label>
+            </label><br/>
             <label>
                 <input type="checkbox" id="replace-alt-arts">
                 Replace Alt-Arts
@@ -83,6 +107,28 @@
         if (!settingsBtn.contains(e.target) && !settingsPopup.contains(e.target)) {
             settingsPopup.style.display = 'none';
         }
+        });
+
+        // Create an overlay element
+        var overlay = document.createElement('div');
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.background = 'rgba(0, 0, 0, 0.5)';
+        overlay.style.zIndex = '999';
+
+        // Add an event listener to the overlay to close the modal
+        overlay.addEventListener('click', function() {
+        settingsPopup.style.display = 'none';
+        overlay.remove();
+        });
+
+        // Add the overlay to the page when the modal is opened
+        settingsBtn.addEventListener('click', function() {
+        document.body.appendChild(overlay);
+        settingsPopup.style.display = 'block';
         });
 
 
