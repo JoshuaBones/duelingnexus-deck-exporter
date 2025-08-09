@@ -8,10 +8,10 @@ Feel free to suggest new features.
 ## Features
 
 ### Export
-* Export your deck to a ydk file
-* Export your deck as a ydke link to your clipboard
-* Export all decks as zip with individual ydk files
-  * Optionally replace custom erratas (see image below)
+* Export to ydk file
+* Export as ydke link to your clipboard
+* Export all decks to a zip with individual ydk files
+  * Optionally replace custom erratas
   * Optionally replace alt-arts with their default counterpart
 
 ### Import
