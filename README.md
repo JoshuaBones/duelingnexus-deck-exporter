@@ -1,9 +1,9 @@
-# duelingnexus-deck-exporter
-Chrome/Firefox extension for DuelingNexus.com <br />
+# Dueling Nexus Deck Exporter
+Chrome/Firefox extension for DuelingNexus.com<br /><br />
+Export your deck as ydk, import/export as YDKe link, download all your decks as a zip file and more!<br />The old exporter no longer works, so this was made in its place.<br />
+Feel free to suggest new features.<br /><br />
 https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde<br />
-https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-exporter/<br />
-Export your deck as ydk, import/export as YDKe link, toggle Goat/Edison erratas and download all your decks as a zip file!<br />The old exporter seems to have been taken down, so this was made in its place.<br />
-Feel free to suggest new features.
+https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-exporter/<br /><br />
 
 ## Features
 
