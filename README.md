@@ -11,7 +11,8 @@ Feel free to suggest new features.
 * Export your deck to a ydk file
 * Export your deck as a ydke link to your clipboard
 * Export all decks as zip with individual ydk files
-** Export all but with all custom erratas replaced (see image below)
+  * Optionally replace custom erratas (see image below)
+  * Optionally replace alt-arts with their default counterpart
 
 ### Import
 * Paste YDKe link after clicking deck area to overwrite the current deck
