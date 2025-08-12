@@ -27,12 +27,12 @@ Firefox: https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-expor
 
 
 ## Injected Scripts
-This extension requires some injected scripts to access local JavaScript variables (Editor, Engine, Deck)
+This extension requires some injected scripts to access local JavaScript variables (Editor, Engine, Deck)<br />
 None of these scripts transmit data and are only run locally on your machine
 
 ### Why injection is needed
 Any feature that makes changes to the deck require one or more of the variables listed above
-* Toggling Errata
+* Toggling Erratas
 * Replacing alt-arts
 * YDKe pasting
 
