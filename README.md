@@ -37,7 +37,7 @@ Any feature that makes changes to the deck require one or more of the variables 
 * YDKe pasting
 
 ### What scripts are injected
-For a complete list of injected scripts, please see "web_accessible_resources" in manifest.json and the injectScript() calls in content.js.
+For a complete list of injected scripts, please see "web_accessible_resources" and any mention of content.js in manifest.json and the injectScript() calls in content.js.
 
 
 ## Licensing
