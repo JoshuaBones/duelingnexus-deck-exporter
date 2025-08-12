@@ -1,9 +1,9 @@
 # Dueling Nexus Deck Exporter
-Chrome/Firefox extension for DuelingNexus.com<br /><br />
+Chrome/Firefox extension for https://DuelingNexus.com<br /><br />
 Export your deck as ydk, import/export as YDKe link, download all your decks as a zip file and more!<br />The old exporter no longer works, so this was made in its place.<br />
 Feel free to suggest new features.<br /><br />
-https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde<br />
-https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-exporter/<br /><br />
+Chrome: https://chromewebstore.google.com/detail/dueling-nexus-deck-export/pjgponfjenccmekfflegcaflngfbokde<br />
+Firefox: https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-exporter/<br /><br />
 
 ## Features
 
@@ -19,11 +19,25 @@ https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-exporter/<br /
 
 ### Editor Improvements
 * Errata toggle
-* Remove alt-arts for Edison mode and compatibility with other simulators
+* Replace alt-arts for Edison mode and compatibility with other simulators
 
 ## Feature Images
 ![DeckEditFeatures](images/deck_edit_features.png)
 ![DeckListFeatures](images/deck_list_features.png)
+
+
+## Injected Scripts
+This extension requires some injected scripts to access local JavaScript variables (Editor, Engine, Deck)
+None of these scripts transmit data and are only run locally on your machine
+
+### Why injection is needed
+Any feature that makes changes to the deck require one or more of the variables listed above
+* Toggling Errata
+* Replacing alt-arts
+* YDKe pasting
+
+### What scripts are injected
+For a complete list of injected scripts, please see "web_accessible_resources" in manifest.json and the injectScript() calls in content.js.
 
 
 ## Licensing
