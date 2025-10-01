@@ -3,7 +3,8 @@
   if (document.getElementById('editor-errata-button')) return;
 
   // Insert this errata button next to the export button
-  const menu = document.getElementById('editor-menu-content');
+  //const menu = document.getElementById('editor-menu-content');
+  const menu = document.querySelector('#editor-menu-content .editor-menu-column:last-of-type')
   if (!menu) return;
 
   // Contains errata toggle and dropdown
@@ -188,8 +189,8 @@
   wrapper.appendChild(ddOptionContainer);
 
 
-  //smaller screens wrap the buttons, so give them a little more rooom
-  document.getElementById('editor-menu-spacer').style.width = '0%';//'10%';//'18%';
+  //smaller screens wrap the buttons, so give them a little more rooom. This spacer was recently removed by DnX
+  //document.getElementById('editor-menu-spacer').style.width = '0%';//'10%';//'18%';
   //always want it before the export button for looks
   const exportBtn = document.getElementById('editor-export-button');
   if (exportBtn) {

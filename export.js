@@ -160,7 +160,7 @@
     wrapper.appendChild(dropdownButton);
     wrapper.appendChild(menu);
 
-    document.getElementById('editor-menu-content').appendChild(wrapper);
+    document.querySelector('#editor-menu-content .editor-menu-column:last-of-type').appendChild(wrapper);
 
     //document.getElementById('editor-menu-content').append(button);
     //document.body.appendChild(button);
