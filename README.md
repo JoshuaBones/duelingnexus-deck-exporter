@@ -19,7 +19,7 @@ Firefox: https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-expor
 
 ### Editor Improvements
 * Errata toggle
-* Replace alt-arts for Edison mode and compatibility with other simulators
+* Replace alt-arts to their original counterpart. For Edison mode and compatibility with other simulators
 
 ## Feature Images
 ![DeckEditFeatures](images/deck_edit_features.png)
