@@ -28,8 +28,13 @@
         exportBtn.addEventListener('click', function () {
             const replaceErratas = document.getElementById('replace-erratas').checked;
             const replaceAltArts = document.getElementById('replace-alt-arts').checked;
+            const keepBadIds = document.getElementById('keep-bad-ids').checked;
 
             const deckPreProcesseses = [];
+
+            if(!keepBadIds) {
+                deckPreProcesseses.push(removeAllNotFoundIds);
+            }
             if (replaceErratas) {
                 deckPreProcesseses.push(replaceAllDeckErratas);
             }
@@ -73,6 +78,10 @@
             <label>
                 <input type="checkbox" id="replace-alt-arts">
                 Replace Alt-Arts
+            </label><br/>
+            <label title="Keep card IDs that aren't found in the database">
+                <input type="checkbox" id="keep-bad-ids">
+                Keep bad card IDs
             </label>
         `;
 
