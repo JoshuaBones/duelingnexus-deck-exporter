@@ -41,9 +41,14 @@
             const pastedText = (event.clipboardData || window.clipboardData).getData('text');
             //console.log('Pasted inside #editor-decks-column:', pastedText);
 
-            const deck = parseURL(pastedText);
+            try {
+                const deck = parseURL(pastedText);
 
-            overwriteDeck(deck);
+                overwriteDeck(deck);
+            } catch (error) {
+                console.error('Error parsing deck from pasted text:', error);
+                alert('Error parsing deck. Please check the format.');
+            }
         }
     });
 })();
