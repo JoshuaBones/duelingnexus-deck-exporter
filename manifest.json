@@ -30,7 +30,7 @@
   "web_accessible_resources": [
     {
       "resources": ["lib/YDKe.js", "errata_toggle.js", "deck_edit_import.js", "deck_edit_alt-art_removal.js"],
-      "matches": ["<all_urls>"]
+      "matches": ["https://duelingnexus.com/*"]
     }
   ],
   "browser_specific_settings": {
