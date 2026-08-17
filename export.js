@@ -10,9 +10,10 @@
   function extractCardIds(deckSelector) {
     const container = document.querySelector(deckSelector);
     if (!container) return [];
-    const images = container.querySelectorAll('img.editor-card-small');
+    //const images = container.querySelectorAll('img.editor-card-small');
+    const images = container.querySelectorAll('img.card-image-element');
     return Array.from(images).map(img => {
-      const match = img.style.backgroundImage.match(/\/(\d+)\.jpg/);
+      const match = img.src.match(/\/(\d+)\.jpg(?:[?#]|$)/);//old: img.style.backg  (/\/(\d+)\.jpg/)
       return match ? match[1] : null;
     }).filter(Boolean);
   }
@@ -91,7 +92,7 @@
 
       const rawName =
         document.querySelector('#editor-deck-name-button-mobile')?.textContent?.trim() ||
-        document.querySelector('.editor-deck-name')?.textContent?.trim() ||
+        document.querySelector('#editor-deck-name')?.textContent?.trim() ||
         document.querySelector('#main-title')?.textContent?.trim() ||
         'deck';
 
@@ -160,7 +161,8 @@
     wrapper.appendChild(dropdownButton);
     wrapper.appendChild(menu);
 
-    document.querySelector('#editor-menu-content .editor-menu-column:last-of-type').appendChild(wrapper);
+    //document.querySelector('#editor-menu-content .editor-menu-column:last-of-type').appendChild(wrapper);
+    document.querySelector('#editor-collapsible-buttons-menu').appendChild(wrapper);
 
     //document.getElementById('editor-menu-content').append(button);
     //document.body.appendChild(button);

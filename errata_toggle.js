@@ -4,7 +4,8 @@
 
   // Insert this errata button next to the export button
   //const menu = document.getElementById('editor-menu-content');
-  const menu = document.querySelector('#editor-menu-content .editor-menu-column:last-of-type')
+  //const menu = document.querySelector('#editor-menu-content .editor-menu-column:last-of-type')
+  const menu = document.querySelector('#editor-collapsible-buttons-menu')
   if (!menu) return;
 
   // Contains errata toggle and dropdown
@@ -24,36 +25,6 @@
 
   btn.addEventListener('click', function () {
     // Normal Id and Errata Id in order. May change to include multiple normal ids eventually (search blue-eyes as an example)
-    const normalIds = [
-      16226786, 20932152, 25862681, 47355498, 48092532, 71645242, 88264978, 40044918, 2134346,
-      7183277, 89111398, 29071332, 76263644, 44178886, 34471458, 89312388, 38538445, 21785144,
-      2356994, 38975369, 95727991, 75745607, 77084837, 43543777, 44364207, 96235275, 45452224,
-      47297616, 95503687, 22624373, 42940404, 78349103, 40695128, 45247637, 69279219, 2420921,
-      68005187, 41006930, 40473581, 9126351, 12538374, 94634433, 76862289, 82841979, 26202165,
-      14878871, 50321796, 7391448, 87910978, 77565204, 21502796, 53183600, 58996430, 15800838,
-      80168720, 80604091, 66403530, 70583986, 43586926, 40737112, 61468779, 22446869, 9995766,
-      65240384, 9156135, 16762927, 17655904, 24294108, 37580756, 47025270, 48148828, 99414168,
-      9596126, 23265594, 16227556, 10248389, 45894482, 15894048, 38369349, 28563545, 75043725,
-      90502999, 81210420, 67159705, 68540058, 55821894, 56840658, 21593977, 2111707, 25119460,
-      29389368, 40172183, 64631466, 91998119, 99724761, 65622692, 64500000, 96300057, 96316857,
-      12923641, 91842653, 90960358, 65458948, 59237154, 5645210, 13955608, 32646477, 52035300
-    ];
-    const errataIds = [
-      130000001, 130000002, 130000003, 130000004, 130000005, 130000006, 130000007, 130000008,
-      130000009, 130000010, 130000011, 130000012, 130000013, 130000014, 130000015, 130000016,
-      130000017, 130000018, 130000019, 130000020, 130000021, 130000022, 130000023, 130000024,
-      130000025, 130000026, 130000027, 130000028, 130000029, 130000030, 130000031, 130000032,
-      130000033, 130000034, 130000035, 130000036, 130000037, 130000038, 130000039, 130000040,
-      130000041, 130000042, 130000043, 130000044, 130000045, 130000046, 130000047, 130000048,
-      130000049, 130000050, 130000051, 130000052, 130000053, 130000054, 130000055, 130000056,
-      130000057, 130000058, 130000059, 130000060, 130000061, 130000062, 130000063, 130000064,
-      130000065, 130000067, 130000068, 130000069, 130000070, 130000071, 130000072, 130000074,
-      130000075, 130000076, 130000077, 130000078, 130000079, 130000080, 130000081, 130000082,
-      130000083, 130000084, 130000085, 130000086, 130000087, 130000088, 130000089, 130000090,
-      130000091, 130000092, 130000093, 130000094, 130000095, 130000096, 130000097, 130000099,
-      130000100, 130000101, 130000102, 130000103, 130000104, 130000105, 130000106, 130000108,
-      130000110, 130000113, 130000114, 130000115
-    ];
 
     Editor.updateDeck();// User adding a card after page load, then clicking toggle does not update Deck object. Basically ensure Deck object is up-to-date before doing anything
 
@@ -81,18 +52,18 @@
     // Start of dealing with erratas
     // Try errataIds first
     let foundType = null;
-    let mainMap = findMatches(Deck.main, errataIds);
-    let extraMap = findMatches(Deck.extra, errataIds);
-    let sideMap = findMatches(Deck.side, errataIds);
+    let mainMap = findMatches(Deck.main, ERRATA_IDS.errataIds);
+    let extraMap = findMatches(Deck.extra, ERRATA_IDS.errataIds);
+    let sideMap = findMatches(Deck.side, ERRATA_IDS.errataIds);
 
     // Look at the vars above ^ and if they have any matches, then we're converting errata to normal ids
     if (Object.keys(mainMap).length || Object.keys(extraMap).length || Object.keys(sideMap).length) {
       foundType = 'errata';
     } else {
       // Try normalIds
-      mainMap = findMatches(Deck.main, normalIds);
-      extraMap = findMatches(Deck.extra, normalIds);
-      sideMap = findMatches(Deck.side, normalIds);
+      mainMap = findMatches(Deck.main, ERRATA_IDS.normalIds);
+      extraMap = findMatches(Deck.extra, ERRATA_IDS.normalIds);
+      sideMap = findMatches(Deck.side, ERRATA_IDS.normalIds);
       // Any matches and we're going from normal ids to erratas
       if (Object.keys(mainMap).length || Object.keys(extraMap).length || Object.keys(sideMap).length) {
         foundType = 'normal';
@@ -102,7 +73,7 @@
     if (!foundType) return; // Nothing to do
 
     // Set swap logic - the ids to swap to
-    const toIds = foundType === 'errata' ? normalIds : errataIds;
+    const toIds = foundType === 'errata' ? ERRATA_IDS.normalIds : ERRATA_IDS.errataIds;
 
   /**
    * Swaps card IDs in a specific deck section based on a mapping of indices.

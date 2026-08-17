@@ -10,6 +10,8 @@ function injectScript(file) {
 }
 
 // Injection is necessary because these features are impossible without access to the page's 'Editor', 'Engine' and 'Deck' variables.
+injectScript('lib/errata_ids.js');
+injectScript('deck_edit_export.js');
 injectScript('deck_edit_alt-art_removal.js');
 injectScript('errata_toggle.js');
 injectScript('deck_edit_import.js');

@@ -1,2 +1,7 @@
 # Ignore the dnx folder which houses sample files
 dnx/
+internal_tools/editor-search-results.html
+internal_tools/cards_en.json
+internal_tools/errata_cards.txt
+internal_tools/errata_ids.js
+internal_tools/errata_mapping.txt
