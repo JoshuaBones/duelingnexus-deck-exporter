@@ -49,24 +49,6 @@
     return { main, extra, side };
   }
 
-  function showMessage(txtMessage = 'Success!') {
-    const message = document.createElement('div');
-    message.innerText = txtMessage;
-    message.style.position = 'fixed';
-    message.style.top = '10px';
-    message.style.left = '50%';
-    message.style.transform = 'translateX(-50%)';
-    message.style.backgroundColor = 'green';
-    message.style.color = 'white';
-    message.style.padding = '10px';
-    message.style.borderRadius = '5px';
-    message.style.zIndex = '9999';
-    document.body.appendChild(message);
-    setTimeout(() => {
-        document.body.removeChild(message);
-    }, 1000);
-  }
-
 /**
  * Adds an "Export" button to the editor, which allows users to download the current deck
  * as a .ydk file. The button is styled and added to a specific container within the page.
@@ -96,7 +78,7 @@
         document.querySelector('#main-title')?.textContent?.trim() ||
         'deck';
 
-      const filename = rawName;//rawName.replace(/[^\w\s-]/gi, '').replace(/\s+/g, '_');
+      const filename = rawName.replace(/[^\w\s-]/gi, '').replace(/\s+/g, '_');//rawName;
       const content = buildDeckText(deck.main, deck.extra, deck.side);
       downloadFile(filename + '.ydk', content);
     });
@@ -142,9 +124,12 @@
         })
         .catch(err => {
           console.error('Error copying text to clipboard:', err);
+          showMessage('Error copying YDKe to clipboard', false);
         });
     });
     menu.appendChild(item);
+
+
 
     dropdownButton.addEventListener('click', (e) => {
       e.stopPropagation();

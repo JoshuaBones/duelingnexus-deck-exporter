@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Dueling Nexus Deck Exporter",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Export your deck for use in any simulator!",
   "permissions": [],
   "content_scripts": [
     {
       "matches": ["https://duelingnexus.com/editor/*"],
-      "js": ["lib/errata_ids.js", "lib/YDKe.js", "lib/utils.js", "content.js", "export.js"],
+      "js": ["lib/message.js", "lib/errata_ids.js", "lib/YDKe.js", "lib/utils.js", "content.js", "export.js"],
       "run_at": "document_end"
     },
     {
@@ -23,13 +23,13 @@
         "https://duelingnexus.com/replays",
         "https://duelingnexus.com/donate"
       ],
-      "js": ["lib/utils.js", "deck_list_export.js", "lib/jszip.min.js"],
+      "js": ["lib/errata_ids.js", "lib/utils.js", "deck_list_export.js", "lib/jszip.min.js"],
       "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["lib/errata_ids.js", "lib/YDKe.js", "errata_toggle.js", "deck_edit_import.js", "deck_edit_alt-art_removal.js"],
+      "resources": ["lib/message.js", "lib/errata_ids.js", "lib/YDKe.js", "errata_toggle.js", "deck_edit_import.js", "deck_edit_alt-art_removal.js"],
       "matches": ["https://duelingnexus.com/*"]
     }
   ],
@@ -43,5 +43,11 @@
         ]
       }
     }
-  }
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+}
 }
