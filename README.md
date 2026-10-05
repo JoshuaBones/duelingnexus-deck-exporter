@@ -15,10 +15,11 @@ Firefox: https://addons.mozilla.org/en-CA/firefox/addon/dueling-nexus-deck-expor
   * Optionally replace alt-arts with their default counterpart
 
 ### Import
+* Import YDKe - Located in the Export arrow
 * Paste YDKe link after clicking deck area to overwrite the current deck
 
 ### Editor Improvements
-* Errata toggle
+* Errata toggle - The custom errata ids don't export to other simulators
 * Replace alt-arts to their original counterpart. For Edison mode and compatibility with other simulators
 
 ## Feature Images

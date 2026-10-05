@@ -10,9 +10,11 @@ function injectScript(file) {
 }
 
 // Injection is necessary because these features are impossible without access to the page's 'Editor', 'Engine' and 'Deck' variables.
+injectScript('lib/message.js');
 injectScript('lib/errata_ids.js');
 injectScript('deck_edit_export.js');
 injectScript('deck_edit_alt-art_removal.js');
 injectScript('errata_toggle.js');
 injectScript('deck_edit_import.js');
 injectScript('lib/YDKe.js');
+//don't forget to add new scripts to manifest.json under web_accessible_resources
