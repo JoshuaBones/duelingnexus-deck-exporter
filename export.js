@@ -65,6 +65,7 @@
     const button = document.createElement('button');
     button.id = 'export-button';
     button.textContent = 'Export';
+    button.title = '.ydk file';
     button.className = 'engine-button engine-button-navbar engine-button-primary ';
     button.style.borderTopRightRadius = '0';
     button.style.borderBottomRightRadius = '0';
@@ -104,6 +105,7 @@
 
     const item = document.createElement('div');
     item.textContent = 'YDKe to clipboard';
+    item.title = 'YDKe links look like this but much longer: ydke://U7Z9BFO2!';
     item.style.padding = '8px 12px';
     item.style.cursor = 'pointer';
     item.style.color = '#fff';

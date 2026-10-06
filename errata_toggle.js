@@ -19,7 +19,7 @@
   btn.id = 'errata-button';
   btn.textContent = 'Erratas'; // Longer text doesn't look good, so added a tooltip
   btn.className = 'engine-button engine-button-navbar engine-button-default ';//editor-button-navbar';
-  btn.title = "Toggle Goat/Edison Erratas (other simulators don't use the same card ids)";
+  btn.title = "Toggle Goat/Edison Erratas (other simulators don't use the same card ids)\nNot needed to play alt formats here anymore";
   btn.style.borderTopRightRadius = '0';
   btn.style.borderBottomRightRadius = '0';
 
@@ -126,7 +126,7 @@
   // Dropdown option
   const item = document.createElement('div');
   item.textContent = 'Replace Alt-Arts';
-  item.title = "Not all alt-arts export to other simulators. Edison mode doesn't work with them either.";
+  item.title = "Not all alt-arts export to other simulators. Alternative formats on this site used to not work with them, but appear to now.";
   item.style.padding = '8px 12px';
   item.style.cursor = 'pointer';
   item.style.color = '#fff';
