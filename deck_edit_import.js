@@ -56,6 +56,48 @@
         }
     });
 
+    function addImportYdkToExportButton() {
+        const menu = document.querySelector('#editor-export-button > div');// Export Button's dropdown menu
+
+        const importYdk = document.createElement('div');
+        importYdk.textContent = 'Import YDK';
+        importYdk.title = 'Also fixes some old errata ids that don\'t work. Please report any problems using the google survey.';
+        importYdk.style.padding = '8px 12px';
+        importYdk.style.cursor = 'pointer';
+        importYdk.style.color = '#fff';
+        importYdk.addEventListener('mouseover', () => importYdk.style.background = '#444');
+        importYdk.addEventListener('mouseout', () => importYdk.style.background = '');
+        importYdk.addEventListener('click', async () => {
+        menu.style.display = 'none';
+
+        const input = document.createElement('input');
+        input.type = 'file';
+
+        input.addEventListener('change', async () => {
+            try {
+                const file = input.files[0];
+                if (!file) return;
+
+                const content = await file.text();
+                console.log(content);
+
+
+                const deck = parseYDK(content);
+                toggleDeckErrata(deck, true, OLD_ERRATA_IDS);// gets rid of old errata ids that are no longer in use, from old exports
+                overwriteDeck(deck);
+                
+                showMessage('Imported YDK file');
+            } catch (e) {
+                console.error('Error parsing YDK file:', e);
+                showMessage('Error parsing YDK file', false);
+            }
+        });
+
+        input.click();
+        });
+        menu.appendChild(importYdk);
+    }
+
     function addImportYdkeToExportButton() {
         const menu = document.querySelector('#editor-export-button > div');// Export Button's dropdown menu
 
@@ -91,6 +133,7 @@
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', addExportButton);
     } else {
+        addImportYdkToExportButton();
         addImportYdkeToExportButton();
     }
 })();
