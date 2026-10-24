@@ -4,6 +4,7 @@
  */
 function injectScript(file) {
   const script = document.createElement('script');
+  script.async = false;
   script.src = chrome.runtime.getURL(file);
   script.onload = function () { this.remove(); };
   (document.head || document.documentElement).appendChild(script);
@@ -12,6 +13,7 @@ function injectScript(file) {
 // Injection is necessary because these features are impossible without access to the page's 'Editor', 'Engine' and 'Deck' variables.
 injectScript('lib/message.js');
 injectScript('lib/errata_ids.js');
+injectScript('lib/errata.js');
 injectScript('deck_edit_export.js');
 injectScript('deck_edit_alt-art_removal.js');
 injectScript('errata_toggle.js');
